@@ -77,3 +77,14 @@
   ck_assert_str_eq(romanNumeral.hundreds, "");
   ck_assert_str_eq(romanNumeral.thousands, "");
   ck_assert(isValidRomanNumeral == true);
+
+#test setsVIIWhenGivenVII
+  struct RomanNumeral romanNumeral;
+
+  bool isValidRomanNumeral = SetRomanNumeral(&romanNumeral, "VII");
+
+  ck_assert_str_eq(romanNumeral.ones, "VII");
+  ck_assert_str_eq(romanNumeral.tens, "");
+  ck_assert_str_eq(romanNumeral.hundreds, "");
+  ck_assert_str_eq(romanNumeral.thousands, "");
+  ck_assert(isValidRomanNumeral == true);
