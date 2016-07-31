@@ -1,7 +1,5 @@
 #include "../src/SetRomanNumeral.h"
 
-#define ROMAN_PLACE_STRING_LENGTH 3
-
 #test setsIWhenGivenI
   struct RomanNumeral romanNumeral;
 
