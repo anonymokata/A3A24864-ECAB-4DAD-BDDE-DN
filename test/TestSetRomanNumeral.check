@@ -32,3 +32,14 @@
   ck_assert_str_eq(romanNumeral.hundreds, "");
   ck_assert_str_eq(romanNumeral.thousands, "");
   ck_assert(isValidRomanNumeral == false);
+
+  #test setsIIIWhenGivenIII
+    struct RomanNumeral romanNumeral;
+
+    bool isValidRomanNumeral = SetRomanNumeral(&romanNumeral, "III");
+
+    ck_assert_str_eq(romanNumeral.ones, "III");
+    ck_assert_str_eq(romanNumeral.tens, "");
+    ck_assert_str_eq(romanNumeral.hundreds, "");
+    ck_assert_str_eq(romanNumeral.thousands, "");
+    ck_assert(isValidRomanNumeral == true);
