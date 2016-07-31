@@ -1,0 +1,14 @@
+#include "../src/SetRomanNumeral.h"
+
+#define ROMAN_PLACE_STRING_LENGTH 3
+
+#test setsIWhenGivenI
+  struct RomanNumeral romanNumeral;
+
+  bool isValidRomanNumeral = SetRomanNumeral(&romanNumeral, "I");
+
+  ck_assert_str_eq(romanNumeral.ones, "I");
+  ck_assert_str_eq(romanNumeral.tens, "");
+  ck_assert_str_eq(romanNumeral.hundreds, "");
+  ck_assert_str_eq(romanNumeral.thousands, "");
+  ck_assert(isValidRomanNumeral == true);
