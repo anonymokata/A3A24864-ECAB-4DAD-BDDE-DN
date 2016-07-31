@@ -10,6 +10,10 @@ bool SetRomanNumeral(struct RomanNumeral *romanNumeral, char *romanString) {
     strcpy(romanNumeral->ones, "IV");
     isRoman = true;
   }
+  else if(strstr(romanString, "V") != NULL) {
+    strcpy(romanNumeral->ones, "V");
+    isRoman = true;
+  }
   else if(strstr(romanString, "III") != NULL) {
     strcpy(romanNumeral->ones, "III");
     isRoman = true;
