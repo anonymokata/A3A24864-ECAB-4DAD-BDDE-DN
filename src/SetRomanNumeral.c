@@ -15,8 +15,8 @@ bool SetRomanNumeral(struct RomanNumeral *romanNumeral, char *romanString) {
   bool symbolFound = false;
   int i;
 
-  char numberOfSymbols = 7;
-  char *romanSymbols[] = {"VII", "VI", "IV", "V", "III", "II", "I"};
+  char numberOfSymbols = 8;
+  char *romanSymbols[] = {"VIII", "VII", "VI", "IV", "V", "III", "II", "I"};
 
   ClearRomanNumeral(romanNumeral);
 

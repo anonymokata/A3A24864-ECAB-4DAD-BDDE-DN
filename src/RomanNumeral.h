@@ -1,7 +1,7 @@
 #ifndef ROMAN_NUMERAL_H
 #define ROMAN_NUMERAL_H
 
-#define ROMAN_PLACE_STRING_LENGTH 3
+#define ROMAN_PLACE_STRING_LENGTH 4
 
 struct RomanNumeral {
   char ones[ROMAN_PLACE_STRING_LENGTH];

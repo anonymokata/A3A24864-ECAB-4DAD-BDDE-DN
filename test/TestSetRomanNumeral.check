@@ -88,3 +88,16 @@
   ck_assert_str_eq(romanNumeral.hundreds, "");
   ck_assert_str_eq(romanNumeral.thousands, "");
   ck_assert(isValidRomanNumeral == true);
+
+
+
+#test setsVIIIWhenGivenVIII
+  struct RomanNumeral romanNumeral;
+
+  bool isValidRomanNumeral = SetRomanNumeral(&romanNumeral, "VIII");
+
+  ck_assert_str_eq(romanNumeral.ones, "VIII");
+  ck_assert_str_eq(romanNumeral.tens, "");
+  ck_assert_str_eq(romanNumeral.hundreds, "");
+  ck_assert_str_eq(romanNumeral.thousands, "");
+  ck_assert(isValidRomanNumeral == true);
