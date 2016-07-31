@@ -3,43 +3,30 @@
 
 typedef enum { false, true } bool;
 
-bool SetRomanNumeral(struct RomanNumeral *romanNumeral, char *romanString) {
-  bool isRoman = false;
-
-  if(strstr(romanString, "VII") != NULL) {
-    strcpy(romanNumeral->ones, "VII");
-    isRoman = true;
-  }
-  else if(strstr(romanString, "VI") != NULL) {
-    strcpy(romanNumeral->ones, "VI");
-    isRoman = true;
-  }
-  else if(strstr(romanString, "IV") != NULL) {
-    strcpy(romanNumeral->ones, "IV");
-    isRoman = true;
-  }
-  else if(strstr(romanString, "V") != NULL) {
-    strcpy(romanNumeral->ones, "V");
-    isRoman = true;
-  }
-  else if(strstr(romanString, "III") != NULL) {
-    strcpy(romanNumeral->ones, "III");
-    isRoman = true;
-  }
-  else if(strstr(romanString, "II") != NULL) {
-    strcpy(romanNumeral->ones, "II");
-    isRoman = true;
-  }
-  else if(strstr(romanString, "I") != NULL) {
-    strcpy(romanNumeral->ones, "I");
-    isRoman = true;
-  } else {
-    strcpy(romanNumeral->ones, "");
-  }
-
+static void ClearRomanNumeral(struct RomanNumeral *romanNumeral) {
+  strcpy(romanNumeral->ones, "");
   strcpy(romanNumeral->tens, "");
   strcpy(romanNumeral->hundreds, "");
   strcpy(romanNumeral->thousands, "");
+}
+
+bool SetRomanNumeral(struct RomanNumeral *romanNumeral, char *romanString) {
+  bool isRoman = false;
+  bool symbolFound = false;
+  int i;
+
+  char numberOfSymbols = 7;
+  char *romanSymbols[] = {"VII", "VI", "IV", "V", "III", "II", "I"};
+
+  ClearRomanNumeral(romanNumeral);
+
+  for(i=0; i<=numberOfSymbols-1 && symbolFound == false; ++i) {
+    if(strstr(romanString, romanSymbols[i]) != NULL) {
+      strcpy(romanNumeral->ones, romanSymbols[i]);
+      isRoman = true;
+      symbolFound = true;
+    }
+  }
 
   return isRoman;
 }
