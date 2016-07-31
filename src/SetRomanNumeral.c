@@ -6,7 +6,11 @@ typedef enum { false, true } bool;
 bool SetRomanNumeral(struct RomanNumeral *romanNumeral, char *romanString) {
   bool isRoman = false;
 
-  if(strstr(romanString, "IV") != NULL) {
+  if(strstr(romanString, "VI") != NULL) {
+    strcpy(romanNumeral->ones, "VI");
+    isRoman = true;
+  }
+  else if(strstr(romanString, "IV") != NULL) {
     strcpy(romanNumeral->ones, "IV");
     isRoman = true;
   }

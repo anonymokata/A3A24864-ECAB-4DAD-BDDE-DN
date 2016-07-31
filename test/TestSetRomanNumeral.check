@@ -65,3 +65,15 @@
     ck_assert_str_eq(romanNumeral.hundreds, "");
     ck_assert_str_eq(romanNumeral.thousands, "");
     ck_assert(isValidRomanNumeral == true);
+
+
+#test setsVIWhenGivenVI
+  struct RomanNumeral romanNumeral;
+
+  bool isValidRomanNumeral = SetRomanNumeral(&romanNumeral, "VI");
+
+  ck_assert_str_eq(romanNumeral.ones, "VI");
+  ck_assert_str_eq(romanNumeral.tens, "");
+  ck_assert_str_eq(romanNumeral.hundreds, "");
+  ck_assert_str_eq(romanNumeral.thousands, "");
+  ck_assert(isValidRomanNumeral == true);
