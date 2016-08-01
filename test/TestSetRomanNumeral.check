@@ -121,3 +121,14 @@
     ck_assert_str_eq(romanNumeral.hundreds, "");
     ck_assert_str_eq(romanNumeral.thousands, "");
     ck_assert(isValidRomanNumeral == true);
+
+#test setsMCXXVIWhenGivenMCXXVI
+    struct RomanNumeral romanNumeral;
+
+    bool isValidRomanNumeral = SetRomanNumeral(&romanNumeral, "MCXXVI");
+
+    ck_assert_str_eq(romanNumeral.ones, "VI");
+    ck_assert_str_eq(romanNumeral.tens, "XX");
+    ck_assert_str_eq(romanNumeral.hundreds, "C");
+    ck_assert_str_eq(romanNumeral.thousands, "M");
+    ck_assert(isValidRomanNumeral == true);

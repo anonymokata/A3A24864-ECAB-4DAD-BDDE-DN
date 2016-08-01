@@ -14,6 +14,8 @@ bool SetRomanNumeral(struct RomanNumeral *romanNumeral, char *romanString) {
   bool isRoman = false;
   bool onesSymbolFound = false;
   bool tensSymbolFound = false;
+  bool hundredsSymbolFound = false;
+  bool thousandsSymbolFound = false;
   int i;
   char *shiftingRomanPointer = romanString;
   char *foundRomanPointer;
@@ -22,11 +24,37 @@ bool SetRomanNumeral(struct RomanNumeral *romanNumeral, char *romanString) {
   char onesSymbolSize[] = {2, 4, 3, 2, 2, 1, 3, 2, 1};
   char *onesRomanSymbols[] = {"IX", "VIII", "VII", "VI", "IV", "V", "III", "II", "I"};
 
-  char tensNumberOfSymbols = 1;
-  char tensSymbolSize[] = {1};
-  char *tensRomanSymbols[] = {"X"};
+  char tensNumberOfSymbols = 2;
+  char tensSymbolSize[] = {2, 1};
+  char *tensRomanSymbols[] = {"XX", "X"};
+
+  char hundredsNumberOfSymbols = 1;
+  char hundredsSymbolSize[] = {1};
+  char *hundredsRomanSymbols[] = {"C"};
+
+  char thousandsNumberOfSymbols = 1;
+  char thousandsSymbolSize[] = {1};
+  char *thousandsRomanSymbols[] = {"M"};
 
   ClearRomanNumeral(romanNumeral);
+
+  for(i=0; i<=thousandsNumberOfSymbols-1 && thousandsSymbolFound == false; ++i) {
+    foundRomanPointer = strstr(shiftingRomanPointer, thousandsRomanSymbols[i]);
+    if((foundRomanPointer != NULL) && (shiftingRomanPointer == foundRomanPointer)) {
+      thousandsSymbolFound = true;
+      strcpy(romanNumeral->thousands, thousandsRomanSymbols[i]);
+      shiftingRomanPointer += thousandsSymbolSize[i];
+    }
+  }
+
+  for(i=0; i<=hundredsNumberOfSymbols-1 && hundredsSymbolFound == false; ++i) {
+    foundRomanPointer = strstr(shiftingRomanPointer, hundredsRomanSymbols[i]);
+    if((foundRomanPointer != NULL) && (shiftingRomanPointer == foundRomanPointer)) {
+      hundredsSymbolFound = true;
+      strcpy(romanNumeral->hundreds, hundredsRomanSymbols[i]);
+      shiftingRomanPointer += hundredsSymbolSize[i];
+    }
+  }
 
   for(i=0; i<=tensNumberOfSymbols-1 && tensSymbolFound == false; ++i) {
     foundRomanPointer = strstr(shiftingRomanPointer, tensRomanSymbols[i]);
