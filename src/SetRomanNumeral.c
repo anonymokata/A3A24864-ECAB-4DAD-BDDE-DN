@@ -24,17 +24,17 @@ bool SetRomanNumeral(struct RomanNumeral *romanNumeral, char *romanString) {
   char onesSymbolSize[] = {2, 4, 3, 2, 2, 1, 3, 2, 1};
   char *onesRomanSymbols[] = {"IX", "VIII", "VII", "VI", "IV", "V", "III", "II", "I"};
 
-  char tensNumberOfSymbols = 3;
-  char tensSymbolSize[] = {3, 2, 1};
-  char *tensRomanSymbols[] = {"XXX", "XX", "X"};
+  char tensNumberOfSymbols = 4;
+  char tensSymbolSize[] = {1, 3, 2, 1};
+  char *tensRomanSymbols[] = {"L", "XXX", "XX", "X"};
 
-  char hundredsNumberOfSymbols = 2;
-  char hundredsSymbolSize[] = {2, 1};
-  char *hundredsRomanSymbols[] = {"CC", "C"};
+  char hundredsNumberOfSymbols = 3;
+  char hundredsSymbolSize[] = {3, 2, 1};
+  char *hundredsRomanSymbols[] = {"CCC", "CC", "C"};
 
-  char thousandsNumberOfSymbols = 2;
-  char thousandsSymbolSize[] = {2, 1};
-  char *thousandsRomanSymbols[] = {"MM", "M"};
+  char thousandsNumberOfSymbols = 3;
+  char thousandsSymbolSize[] = {3, 2, 1};
+  char *thousandsRomanSymbols[] = {"MMM", "MM", "M"};
 
   ClearRomanNumeral(romanNumeral);
 
