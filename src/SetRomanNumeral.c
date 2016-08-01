@@ -1,11 +1,7 @@
 #include <string.h>
 #include <stdio.h>
 #include "RomanNumeral.h"
-
-#define ROW 4
-#define COL 9
-
-typedef enum { false, true } bool;
+#include "RomanSymbolDefinitions.h"
 
 int symbolSize[ROW][COL] = {
   {2, 4, 3, 2, 2, 1, 3, 2, 1},
@@ -14,12 +10,7 @@ int symbolSize[ROW][COL] = {
   {0, 0, 0, 0, 0, 0, 3, 2, 1}
 };
 
-char *romanSymbols[ROW][COL] = {
-  {"IX", "VIII", "VII", "VI", "IV", "V", "III", "II", "I"},
-  {"XC", "LXXX", "LXX", "LX", "XL", "L", "XXX", "XX", "X"},
-  {"CM", "DCCC", "DCC", "DC", "CD", "D", "CCC", "CC", "C"},
-  {" ", " ", " ", " ", " ", " ", "MMM", "MM", "M"}
-};
+typedef enum { false, true } bool;
 
 static void ClearRomanNumeral(struct RomanNumeral *romanNumeral) {
   strcpy(romanNumeral->ones, "");
