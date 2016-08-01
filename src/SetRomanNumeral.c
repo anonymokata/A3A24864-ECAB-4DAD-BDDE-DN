@@ -23,13 +23,13 @@ bool SetRomanNumeral(struct RomanNumeral *romanNumeral, char *romanString) {
   int symbolSize[ROW][COL] = {
     {2, 4, 3, 2, 2, 1, 3, 2, 1},
     {0, 0, 0, 0, 0, 1, 3, 2, 1},
-    {0, 0, 0, 0, 0, 0, 3, 2, 1},
+    {0, 0, 0, 0, 0, 1, 3, 2, 1},
     {0, 0, 0, 0, 0, 0, 3, 2, 1}
   };
   char *romanSymbols[ROW][COL] = {
     {"IX", "VIII", "VII", "VI", "IV", "V", "III", "II", "I"},
     {" ", " ", " ", " ", " ", "L", "XXX", "XX", "X"},
-    {" ", " ", " ", " ", " ", " ", "CCC", "CC", "C"},
+    {" ", " ", " ", " ", " ", "D", "CCC", "CC", "C"},
     {" ", " ", " ", " ", " ", " ", "MMM", "MM", "M"}
   };
   ClearRomanNumeral(romanNumeral);
