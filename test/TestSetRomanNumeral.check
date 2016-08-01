@@ -55,16 +55,16 @@
     ck_assert_str_eq(romanNumeral.thousands, "");
     ck_assert(isValidRomanNumeral == true);
 
-  #test setsVWhenGivenV
-    struct RomanNumeral romanNumeral;
+#test setsVWhenGivenV
+  struct RomanNumeral romanNumeral;
 
-    bool isValidRomanNumeral = SetRomanNumeral(&romanNumeral, "V");
+  bool isValidRomanNumeral = SetRomanNumeral(&romanNumeral, "V");
 
-    ck_assert_str_eq(romanNumeral.ones, "V");
-    ck_assert_str_eq(romanNumeral.tens, "");
-    ck_assert_str_eq(romanNumeral.hundreds, "");
-    ck_assert_str_eq(romanNumeral.thousands, "");
-    ck_assert(isValidRomanNumeral == true);
+  ck_assert_str_eq(romanNumeral.ones, "V");
+  ck_assert_str_eq(romanNumeral.tens, "");
+  ck_assert_str_eq(romanNumeral.hundreds, "");
+  ck_assert_str_eq(romanNumeral.thousands, "");
+  ck_assert(isValidRomanNumeral == true);
 
 
 #test setsVIWhenGivenVI
@@ -109,7 +109,7 @@
     ck_assert_str_eq(romanNumeral.tens, "");
     ck_assert_str_eq(romanNumeral.hundreds, "");
     ck_assert_str_eq(romanNumeral.thousands, "");
-/*    ck_assert(isValidRomanNumeral == true); */
+    ck_assert(isValidRomanNumeral == true);
 
 #test setsXIWhenGivenXI
     struct RomanNumeral romanNumeral;
