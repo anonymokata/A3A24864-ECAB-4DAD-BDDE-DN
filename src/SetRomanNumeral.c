@@ -1,6 +1,9 @@
 #include <string.h>
 #include "RomanNumeral.h"
 
+#define ROW 4
+#define COL 9
+
 typedef enum { false, true } bool;
 
 static void ClearRomanNumeral(struct RomanNumeral *romanNumeral) {
@@ -12,68 +15,49 @@ static void ClearRomanNumeral(struct RomanNumeral *romanNumeral) {
 
 bool SetRomanNumeral(struct RomanNumeral *romanNumeral, char *romanString) {
   bool isRoman = false;
-  bool onesSymbolFound = false;
-  bool tensSymbolFound = false;
-  bool hundredsSymbolFound = false;
-  bool thousandsSymbolFound = false;
-  int i;
+  bool symbolFound = false;
+  int i, j;
   char *shiftingRomanPointer = romanString;
   char *foundRomanPointer;
 
-  char onesNumberOfSymbols = 9;
-  char onesSymbolSize[] = {2, 4, 3, 2, 2, 1, 3, 2, 1};
-  char *onesRomanSymbols[] = {"IX", "VIII", "VII", "VI", "IV", "V", "III", "II", "I"};
-
-  char tensNumberOfSymbols = 9;
-  char tensSymbolSize[] = {0, 0, 0, 0, 0, 1, 3, 2, 1};
-  char *tensRomanSymbols[] = {" ", " ", " ", " ", " ", "L", "XXX", "XX", "X"};
-
-  char hundredsNumberOfSymbols = 9;
-  char hundredsSymbolSize[] = {0, 0, 0, 0, 0, 0, 3, 2, 1};
-  char *hundredsRomanSymbols[] = {" ", " ", " ", " ", " ", " ", "CCC", "CC", "C"};
-
-  char thousandsNumberOfSymbols = 9;
-  char thousandsSymbolSize[] = {0, 0, 0, 0, 0, 0, 3, 2, 1};
-  char *thousandsRomanSymbols[] = {" ", " ", " ", " ", " ", " ", "MMM", "MM", "M"};
-
+  int symbolSize[ROW][COL] = {
+    {2, 4, 3, 2, 2, 1, 3, 2, 1},
+    {0, 0, 0, 0, 0, 1, 3, 2, 1},
+    {0, 0, 0, 0, 0, 0, 3, 2, 1},
+    {0, 0, 0, 0, 0, 0, 3, 2, 1}
+  };
+  char *romanSymbols[ROW][COL] = {
+    {"IX", "VIII", "VII", "VI", "IV", "V", "III", "II", "I"},
+    {" ", " ", " ", " ", " ", "L", "XXX", "XX", "X"},
+    {" ", " ", " ", " ", " ", " ", "CCC", "CC", "C"},
+    {" ", " ", " ", " ", " ", " ", "MMM", "MM", "M"}
+  };
   ClearRomanNumeral(romanNumeral);
 
-  for(i=0; i<=thousandsNumberOfSymbols-1 && thousandsSymbolFound == false; ++i) {
-    foundRomanPointer = strstr(shiftingRomanPointer, thousandsRomanSymbols[i]);
-    if((foundRomanPointer != NULL) && (shiftingRomanPointer == foundRomanPointer)) {
-      thousandsSymbolFound = true;
-      strcpy(romanNumeral->thousands, thousandsRomanSymbols[i]);
-      shiftingRomanPointer += thousandsSymbolSize[i];
+  for(i=ROW-1; i>=0; --i) {
+    symbolFound = false;
+    for(j=0; j<=COL-1 && symbolFound == false; ++j) {
+      foundRomanPointer = strstr(shiftingRomanPointer, romanSymbols[i][j]);
+      if((foundRomanPointer != NULL) && (shiftingRomanPointer == foundRomanPointer)) {
+        symbolFound = true;
+        switch(i) {
+          case 0:
+            strcpy(romanNumeral->ones, romanSymbols[i][j]);
+            break;
+          case 1:
+            strcpy(romanNumeral->tens, romanSymbols[i][j]);
+            break;
+          case 2:
+            strcpy(romanNumeral->hundreds, romanSymbols[i][j]);
+            break;
+          case 3:
+            strcpy(romanNumeral->thousands, romanSymbols[i][j]);
+            break;
+        }
+        shiftingRomanPointer += symbolSize[i][j];
+      }
     }
   }
-
-  for(i=0; i<=hundredsNumberOfSymbols-1 && hundredsSymbolFound == false; ++i) {
-    foundRomanPointer = strstr(shiftingRomanPointer, hundredsRomanSymbols[i]);
-    if((foundRomanPointer != NULL) && (shiftingRomanPointer == foundRomanPointer)) {
-      hundredsSymbolFound = true;
-      strcpy(romanNumeral->hundreds, hundredsRomanSymbols[i]);
-      shiftingRomanPointer += hundredsSymbolSize[i];
-    }
-  }
-
-  for(i=0; i<=tensNumberOfSymbols-1 && tensSymbolFound == false; ++i) {
-    foundRomanPointer = strstr(shiftingRomanPointer, tensRomanSymbols[i]);
-    if((foundRomanPointer != NULL) && (shiftingRomanPointer == foundRomanPointer)) {
-      tensSymbolFound = true;
-      strcpy(romanNumeral->tens, tensRomanSymbols[i]);
-      shiftingRomanPointer += tensSymbolSize[i];
-    }
-  }
-
-  for(i=0; i<=onesNumberOfSymbols-1 && onesSymbolFound == false; ++i) {
-    foundRomanPointer = strstr(shiftingRomanPointer, onesRomanSymbols[i]);
-    if((foundRomanPointer != NULL) && (shiftingRomanPointer == foundRomanPointer)) {
-      onesSymbolFound = true;
-      strcpy(romanNumeral->ones, onesRomanSymbols[i]);
-      shiftingRomanPointer +=  onesSymbolSize[i];
-    }
-  }
-
   if(strlen(shiftingRomanPointer) == 0 ) {
     isRoman = true;
   }
