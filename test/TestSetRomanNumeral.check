@@ -132,3 +132,14 @@
     ck_assert_str_eq(romanNumeral.hundreds, "C");
     ck_assert_str_eq(romanNumeral.thousands, "M");
     ck_assert(isValidRomanNumeral == true);
+
+#test setsMMCCXXXWhenGivenMMCCXXX
+    struct RomanNumeral romanNumeral;
+
+    bool isValidRomanNumeral = SetRomanNumeral(&romanNumeral, "MMCCXXX");
+
+    ck_assert_str_eq(romanNumeral.ones, "");
+    ck_assert_str_eq(romanNumeral.tens, "XXX");
+    ck_assert_str_eq(romanNumeral.hundreds, "CC");
+    ck_assert_str_eq(romanNumeral.thousands, "MM");
+    ck_assert(isValidRomanNumeral == true);
