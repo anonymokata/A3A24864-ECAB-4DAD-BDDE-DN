@@ -1,10 +1,25 @@
 #include <string.h>
+#include <stdio.h>
 #include "RomanNumeral.h"
 
 #define ROW 4
 #define COL 9
 
 typedef enum { false, true } bool;
+
+int symbolSize[ROW][COL] = {
+  {2, 4, 3, 2, 2, 1, 3, 2, 1},
+  {2, 4, 3, 2, 2, 1, 3, 2, 1},
+  {2, 4, 3, 2, 2, 1, 3, 2, 1},
+  {0, 0, 0, 0, 0, 0, 3, 2, 1}
+};
+
+char *romanSymbols[ROW][COL] = {
+  {"IX", "VIII", "VII", "VI", "IV", "V", "III", "II", "I"},
+  {"XC", "LXXX", "LXX", "LX", "XL", "L", "XXX", "XX", "X"},
+  {"CM", "DCCC", "DCC", "DC", "CD", "D", "CCC", "CC", "C"},
+  {" ", " ", " ", " ", " ", " ", "MMM", "MM", "M"}
+};
 
 static void ClearRomanNumeral(struct RomanNumeral *romanNumeral) {
   strcpy(romanNumeral->ones, "");
@@ -20,18 +35,6 @@ bool SetRomanNumeral(struct RomanNumeral *romanNumeral, char *romanString) {
   char *shiftingRomanPointer = romanString;
   char *foundRomanPointer;
 
-  int symbolSize[ROW][COL] = {
-    {2, 4, 3, 2, 2, 1, 3, 2, 1},
-    {0, 0, 0, 0, 0, 1, 3, 2, 1},
-    {0, 0, 0, 0, 0, 1, 3, 2, 1},
-    {0, 0, 0, 0, 0, 0, 3, 2, 1}
-  };
-  char *romanSymbols[ROW][COL] = {
-    {"IX", "VIII", "VII", "VI", "IV", "V", "III", "II", "I"},
-    {" ", " ", " ", " ", " ", "L", "XXX", "XX", "X"},
-    {" ", " ", " ", " ", " ", "D", "CCC", "CC", "C"},
-    {" ", " ", " ", " ", " ", " ", "MMM", "MM", "M"}
-  };
   ClearRomanNumeral(romanNumeral);
 
   for(i=ROW-1; i>=0; --i) {
@@ -40,6 +43,7 @@ bool SetRomanNumeral(struct RomanNumeral *romanNumeral, char *romanString) {
       foundRomanPointer = strstr(shiftingRomanPointer, romanSymbols[i][j]);
       if((foundRomanPointer != NULL) && (shiftingRomanPointer == foundRomanPointer)) {
         symbolFound = true;
+
         switch(i) {
           case 0:
             strcpy(romanNumeral->ones, romanSymbols[i][j]);
@@ -58,7 +62,8 @@ bool SetRomanNumeral(struct RomanNumeral *romanNumeral, char *romanString) {
       }
     }
   }
-  if(strlen(shiftingRomanPointer) == 0 ) {
+
+  if(strlen(shiftingRomanPointer) == 0) {
     isRoman = true;
   }
   else {
