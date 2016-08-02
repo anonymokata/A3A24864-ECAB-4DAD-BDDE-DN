@@ -11,3 +11,15 @@
   int arabic = RomanToArabic(&romanNumeral);
 
   ck_assert_int_eq(arabic, 1);
+
+#test givenMCXIReturns1111
+  struct RomanNumeral romanNumeral;
+
+  strcpy(romanNumeral.ones, "I");
+  strcpy(romanNumeral.tens, "X");
+  strcpy(romanNumeral.hundreds, "C");
+  strcpy(romanNumeral.thousands, "M");
+
+  int arabic = RomanToArabic(&romanNumeral);
+
+  ck_assert_int_eq(arabic, 1111);
