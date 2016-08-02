@@ -57,3 +57,14 @@
   bool isValidRomanNumeral = ArabicToRoman(&romanNumeral, 0);
 
   ck_assert(isValidRomanNumeral == false);
+
+#test given555ReturnsDLV
+  struct RomanNumeral romanNumeral;
+
+  bool isValidRomanNumeral = ArabicToRoman(&romanNumeral, 555);
+
+  ck_assert_str_eq(romanNumeral.ones, "V");
+  ck_assert_str_eq(romanNumeral.tens, "L");
+  ck_assert_str_eq(romanNumeral.hundreds, "D");
+  ck_assert_str_eq(romanNumeral.thousands, "");
+  ck_assert(isValidRomanNumeral == true);
