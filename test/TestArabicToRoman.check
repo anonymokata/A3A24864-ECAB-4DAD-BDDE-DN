@@ -32,3 +32,14 @@
   ck_assert_str_eq(romanNumeral.hundreds, "CCC");
   ck_assert_str_eq(romanNumeral.thousands, "MM");
   ck_assert(isValidRomanNumeral == true);
+
+#test MMMCDXLIV
+  struct RomanNumeral romanNumeral;
+
+  bool isValidRomanNumeral = ArabicToRoman(&romanNumeral, 3444);
+
+  ck_assert_str_eq(romanNumeral.ones, "IV");
+  ck_assert_str_eq(romanNumeral.tens, "XL");
+  ck_assert_str_eq(romanNumeral.hundreds, "CD");
+  ck_assert_str_eq(romanNumeral.thousands, "MMM");
+  ck_assert(isValidRomanNumeral == true);

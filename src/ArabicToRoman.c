@@ -4,13 +4,13 @@
 typedef enum { false, true } bool;
 
 #define ROW 4
-#define COL 4
+#define COL 5
 
 char *romanSymbols[ROW][COL] = {
-  {"", "I", "II", "III" },
-  {"", "X", "XX", "XXX" },
-  {"", "C", "CC", "CCC" },
-  {"", "M", "MM", "MMM" }
+  {"", "I", "II", "III", "IV" },
+  {"", "X", "XX", "XXX", "XL" },
+  {"", "C", "CC", "CCC", "CD" },
+  {"", "M", "MM", "MMM", "" }
 };
 
 
