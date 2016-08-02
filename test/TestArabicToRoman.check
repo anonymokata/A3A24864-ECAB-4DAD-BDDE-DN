@@ -50,3 +50,10 @@
   bool isValidRomanNumeral = ArabicToRoman(&romanNumeral, 4000);
 
   ck_assert(isValidRomanNumeral == false);
+
+#test given0ReturnsAsInvalid
+  struct RomanNumeral romanNumeral;
+
+  bool isValidRomanNumeral = ArabicToRoman(&romanNumeral, 0);
+
+  ck_assert(isValidRomanNumeral == false);

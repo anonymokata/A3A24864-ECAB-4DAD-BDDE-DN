@@ -17,7 +17,7 @@ char *romanSymbols[ROW][COL] = {
 bool ArabicToRoman(struct RomanNumeral *romanNumeral, int arabic) {
   int onesPlace = arabic;
 
-  if(arabic >= 4000) {
+  if(arabic >= 4000 || arabic <= 0) {
     return false;
   }
 
