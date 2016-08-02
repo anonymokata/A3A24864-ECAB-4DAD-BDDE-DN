@@ -1,6 +1,6 @@
 #include "../src/RomanToArabic.h"
 
-#test setsITo1
+#test givenIReturns1
   struct RomanNumeral romanNumeral;
 
   strcpy(romanNumeral.ones, "I");
