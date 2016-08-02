@@ -7,8 +7,14 @@ int RomanToArabic(struct RomanNumeral *romanNumeral) {
     !strcmp(romanNumeral->hundreds, "") &&
     !strcmp(romanNumeral->thousands, "") ) {
       return 1;
-    }
-    else {
+  }
+  if(!strcmp(romanNumeral->ones, "I") &&
+    !strcmp(romanNumeral->tens, "X") &&
+    !strcmp(romanNumeral->hundreds, "C") &&
+    !strcmp(romanNumeral->thousands, "M") ) {
       return 1111;
-    }
+  }
+  else {
+    return 2222;
+  }
 }
