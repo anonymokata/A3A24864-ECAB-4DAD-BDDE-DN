@@ -2,12 +2,12 @@
 #include "RomanNumeral.h"
 
 #define ROW 4
-#define COL 7
+#define COL 8
 
 char *romanSymbols[ROW][COL] = {
-  {"", "I", "II", "III", "IV", "V", "VI" },
-  {"", "X", "XX", "XXX", "XL", "L", "LX" },
-  {"", "C", "CC", "CCC", "CD", "D", "DC" },
+  {"", "I", "II", "III", "IV", "V", "VI", "VII" },
+  {"", "X", "XX", "XXX", "XL", "L", "LX", "LXX" },
+  {"", "C", "CC", "CCC", "CD", "D", "DC", "DCC" },
   {"", "M", "MM", "MMM" }
 };
 

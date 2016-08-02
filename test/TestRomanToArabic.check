@@ -72,7 +72,6 @@
 
   ck_assert_int_eq(arabic, 1555);
 
-
 #test givenMDCLXVIReturns1666
   struct RomanNumeral romanNumeral;
 
@@ -84,3 +83,16 @@
   int arabic = RomanToArabic(&romanNumeral);
 
   ck_assert_int_eq(arabic, 1666);
+
+
+#test givenMDCLXVIReturns1777
+  struct RomanNumeral romanNumeral;
+
+  strcpy(romanNumeral.ones, "VII");
+  strcpy(romanNumeral.tens, "LXX");
+  strcpy(romanNumeral.hundreds, "DCC");
+  strcpy(romanNumeral.thousands, "M");
+
+  int arabic = RomanToArabic(&romanNumeral);
+
+  ck_assert_int_eq(arabic, 1777);
