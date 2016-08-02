@@ -17,6 +17,10 @@ char *romanSymbols[ROW][COL] = {
 bool ArabicToRoman(struct RomanNumeral *romanNumeral, int arabic) {
   int onesPlace = arabic;
 
+  if(arabic >= 4000) {
+    return false;
+  }
+
 	int thousandsDigit = arabic/1000;
 	int hundredsDigit = (arabic - thousandsDigit*1000)/100;
 	int tensDigit = (arabic - hundredsDigit*100 - thousandsDigit*1000)/10;
