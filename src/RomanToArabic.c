@@ -2,15 +2,14 @@
 #include "RomanNumeral.h"
 
 #define ROW 4
-#define COL 4
+#define COL 5
 
 char *romanSymbols[ROW][COL] = {
-  {"", "I", "II", "III" },
-  {"", "X", "XX", "XXX" },
-  {"", "C", "CC", "CCC" },
+  {"", "I", "II", "III", "IV" },
+  {"", "X", "XX", "XXX", "XL" },
+  {"", "C", "CC", "CCC", "CD"},
   {"", "M", "MM", "MMM" }
 };
-
 
 int RomanToArabic(struct RomanNumeral *romanNumeral) {
   int i;
@@ -28,7 +27,7 @@ int RomanToArabic(struct RomanNumeral *romanNumeral) {
     if(!strcmp(romanNumeral->hundreds, romanSymbols[2][i]))
       arabic += i*100;
   }
-  for(i = 0; i < COL; ++i) {
+  for(i = 0; i < 4; ++i) {
     if(!strcmp(romanNumeral->thousands, romanSymbols[3][i]))
       arabic += i*1000;
   }
