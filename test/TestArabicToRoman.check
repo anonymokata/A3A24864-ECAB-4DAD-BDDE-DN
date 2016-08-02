@@ -1,6 +1,6 @@
 #include "../src/ArabicToRoman.h"
 
-#test givenIReturns1
+#test given1ReturnsI
   struct RomanNumeral romanNumeral;
 
   bool isValidRomanNumeral = ArabicToRoman(&romanNumeral, 1);
@@ -11,7 +11,7 @@
   ck_assert_str_eq(romanNumeral.thousands, "");
   ck_assert(isValidRomanNumeral == true);
 
-#test givenMCCXIIReturns1212
+#test given1212ReturnsMCCXII
   struct RomanNumeral romanNumeral;
 
   bool isValidRomanNumeral = ArabicToRoman(&romanNumeral, 1212);
@@ -22,7 +22,7 @@
   ck_assert_str_eq(romanNumeral.thousands, "M");
   ck_assert(isValidRomanNumeral == true);
 
-#test givenMMCCCXXIIIReturns2323
+#test given2323ReturnsMMCCCXXIII
   struct RomanNumeral romanNumeral;
 
   bool isValidRomanNumeral = ArabicToRoman(&romanNumeral, 2323);
@@ -33,7 +33,7 @@
   ck_assert_str_eq(romanNumeral.thousands, "MM");
   ck_assert(isValidRomanNumeral == true);
 
-#test givenMMMCDXLIVReturns3444
+#test given3444ReturnsMMMCDXLIV
   struct RomanNumeral romanNumeral;
 
   bool isValidRomanNumeral = ArabicToRoman(&romanNumeral, 3444);
@@ -44,7 +44,7 @@
   ck_assert_str_eq(romanNumeral.thousands, "MMM");
   ck_assert(isValidRomanNumeral == true);
 
-#test givenMMMMReturnsAsInvalid
+#test given4000ReturnsAsInvalid
   struct RomanNumeral romanNumeral;
 
   bool isValidRomanNumeral = ArabicToRoman(&romanNumeral, 4000);
