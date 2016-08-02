@@ -108,7 +108,7 @@
 
   ck_assert_int_eq(arabic, 1888);
 
-#test givenMMDCCCLXXXVIIIReturns2999
+#test givenMMCVXCIXReturns2999
   struct RomanNumeral romanNumeral;
 
   strcpy(romanNumeral.ones, "IX");
