@@ -3,26 +3,29 @@
 
 typedef enum { false, true } bool;
 
+#define ROW 4
+#define COL 4
+
+char *romanSymbols[ROW][COL] = {
+  {"", "I", "II", "III" },
+  {"", "X", "XX", "XXX" },
+  {"", "C", "CC", "CCC" },
+  {"", "M", "MM", "MMM" }
+};
+
+
 bool ArabicToRoman(struct RomanNumeral *romanNumeral, int arabic) {
   int onesPlace = arabic;
 
-  if(arabic == 1) {
-    strcpy(romanNumeral->ones, "I");
-    strcpy(romanNumeral->tens, "");
-    strcpy(romanNumeral->hundreds, "");
-    strcpy(romanNumeral->thousands, "");
-  }
-  else if(arabic == 1212) {
-    strcpy(romanNumeral->ones, "II");
-    strcpy(romanNumeral->tens, "X");
-    strcpy(romanNumeral->hundreds, "CC");
-    strcpy(romanNumeral->thousands, "M");
-  }
-  else {
-    strcpy(romanNumeral->ones, "III");
-    strcpy(romanNumeral->tens, "XX");
-    strcpy(romanNumeral->hundreds, "CCC");
-    strcpy(romanNumeral->thousands, "MM");
-  }
+	int thousandsDigit = arabic/1000;
+	int hundredsDigit = (arabic - thousandsDigit*1000)/100;
+	int tensDigit = (arabic - hundredsDigit*100 - thousandsDigit*1000)/10;
+	int onesDigit = arabic - tensDigit*10 - hundredsDigit*100 - thousandsDigit*1000;
+
+  strcpy(romanNumeral->thousands, romanSymbols[3][thousandsDigit]);
+  strcpy(romanNumeral->hundreds, romanSymbols[2][hundredsDigit]);
+  strcpy(romanNumeral->tens, romanSymbols[1][tensDigit]);
+  strcpy(romanNumeral->ones, romanSymbols[0][onesDigit]);
+
   return true;
 }
