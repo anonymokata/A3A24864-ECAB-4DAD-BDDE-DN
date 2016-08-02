@@ -79,3 +79,14 @@
   ck_assert_str_eq(romanNumeral.hundreds, "DC");
   ck_assert_str_eq(romanNumeral.thousands, "M");
   ck_assert(isValidRomanNumeral == true);
+
+#test given707ReturnsDCCVII
+  struct RomanNumeral romanNumeral;
+
+  bool isValidRomanNumeral = ArabicToRoman(&romanNumeral, 707);
+
+  ck_assert_str_eq(romanNumeral.ones, "VII");
+  ck_assert_str_eq(romanNumeral.tens, "");
+  ck_assert_str_eq(romanNumeral.hundreds, "DCC");
+  ck_assert_str_eq(romanNumeral.thousands, "");
+  ck_assert(isValidRomanNumeral == true);
