@@ -59,3 +59,15 @@
   int arabic = RomanToArabic(&romanNumeral);
 
   ck_assert_int_eq(arabic, 3444);
+
+#test givenMDLVReturns1555
+  struct RomanNumeral romanNumeral;
+
+  strcpy(romanNumeral.ones, "V");
+  strcpy(romanNumeral.tens, "L");
+  strcpy(romanNumeral.hundreds, "D");
+  strcpy(romanNumeral.thousands, "M");
+
+  int arabic = RomanToArabic(&romanNumeral);
+
+  ck_assert_int_eq(arabic, 1555);
