@@ -1,5 +1,4 @@
 #include <string.h>
-#include <stdio.h>
 #include "RomanNumeral.h"
 #include "RomanSymbolDefinitions.h"
 
