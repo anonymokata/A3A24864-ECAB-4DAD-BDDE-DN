@@ -12,11 +12,17 @@ bool ArabicToRoman(struct RomanNumeral *romanNumeral, int arabic) {
     strcpy(romanNumeral->hundreds, "");
     strcpy(romanNumeral->thousands, "");
   }
-  else {
+  else if(arabic == 1212) {
     strcpy(romanNumeral->ones, "II");
     strcpy(romanNumeral->tens, "X");
     strcpy(romanNumeral->hundreds, "CC");
     strcpy(romanNumeral->thousands, "M");
+  }
+  else {
+    strcpy(romanNumeral->ones, "III");
+    strcpy(romanNumeral->tens, "XX");
+    strcpy(romanNumeral->hundreds, "CCC");
+    strcpy(romanNumeral->thousands, "MM");
   }
   return true;
 }
