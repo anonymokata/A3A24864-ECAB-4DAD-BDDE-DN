@@ -2,13 +2,13 @@
 #define ROMAN_SYMBOL_DEFINITIONS_H
 
 #define ROW 4
-#define COL 9
+#define COL 10
 
 char *romanSymbols[ROW][COL] = {
-  {"IX", "VIII", "VII", "VI", "IV", "V", "III", "II", "I"},
-  {"XC", "LXXX", "LXX", "LX", "XL", "L", "XXX", "XX", "X"},
-  {"CM", "DCCC", "DCC", "DC", "CD", "D", "CCC", "CC", "C"},
-  {" ", " ", " ", " ", " ", " ", "MMM", "MM", "M"}
+  {"", "I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX" },
+  {"", "X", "XX", "XXX", "XL", "L", "LX", "LXX", "LXXX", "XC" },
+  {"", "C", "CC", "CCC", "CD", "D", "DC", "DCC", "DCCC", "CM" },
+  {"", "M", "MM", "MMM", " ", " ", " ", " ", " ", " " }
 };
 
 #endif /* ROMAN_SYMBOL_DEFINITIONS_H */

@@ -2,12 +2,8 @@
 #include "RomanNumeral.h"
 #include "RomanSymbolDefinitions.h"
 
-int symbolSize[ROW][COL] = {
-  {2, 4, 3, 2, 2, 1, 3, 2, 1},
-  {2, 4, 3, 2, 2, 1, 3, 2, 1},
-  {2, 4, 3, 2, 2, 1, 3, 2, 1},
-  {0, 0, 0, 0, 0, 0, 3, 2, 1}
-};
+static int romanSymbolLength[] = {0, 1, 2, 3, 2, 1, 2, 3, 4, 2};
+static int symbolSearchOrder[COL] = {0, 9, 8, 7, 6, 4, 5, 3, 2, 1};
 
 typedef enum { false, true } bool;
 
@@ -29,26 +25,26 @@ bool SetRomanNumeral(struct RomanNumeral *romanNumeral, char *romanString) {
 
   for(i=ROW-1; i>=0; --i) {
     symbolFound = false;
-    for(j=0; j<=COL-1 && symbolFound == false; ++j) {
-      foundRomanPointer = strstr(shiftingRomanPointer, romanSymbols[i][j]);
+    for(j=1; j<=COL-1 && symbolFound == false; ++j) {
+      foundRomanPointer = strstr(shiftingRomanPointer, romanSymbols[i][symbolSearchOrder[j]]);
       if((foundRomanPointer != NULL) && (shiftingRomanPointer == foundRomanPointer)) {
         symbolFound = true;
 
         switch(i) {
           case 0:
-            strcpy(romanNumeral->ones, romanSymbols[i][j]);
+            strcpy(romanNumeral->ones, romanSymbols[i][symbolSearchOrder[j]]);
             break;
           case 1:
-            strcpy(romanNumeral->tens, romanSymbols[i][j]);
+            strcpy(romanNumeral->tens, romanSymbols[i][symbolSearchOrder[j]]);
             break;
           case 2:
-            strcpy(romanNumeral->hundreds, romanSymbols[i][j]);
+            strcpy(romanNumeral->hundreds, romanSymbols[i][symbolSearchOrder[j]]);
             break;
           case 3:
-            strcpy(romanNumeral->thousands, romanSymbols[i][j]);
+            strcpy(romanNumeral->thousands, romanSymbols[i][symbolSearchOrder[j]]);
             break;
         }
-        shiftingRomanPointer += symbolSize[i][j];
+        shiftingRomanPointer += romanSymbolLength[symbolSearchOrder[j]];
       }
     }
   }
