@@ -3,7 +3,7 @@ test: testRomanNumeral
 	./test/TestRomanToArabic
 
 testmem: testRomanNumeral
-	valgrind --leak-check=yes ./test/TestRomanNumeral
+	valgrind --leak-check=yes ./test/TestSetRomanNumeral
 	valgrind --leak-check=yes ./test/TestRomanToArabic
 
 testRomanNumeral: .checkmk ./src/SetRomanNumeral.c

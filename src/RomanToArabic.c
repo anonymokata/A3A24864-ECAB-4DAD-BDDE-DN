@@ -1,26 +1,37 @@
 #include <string.h>
 #include "RomanNumeral.h"
 
+#define ROW 4
+#define COL 4
+
+char *romanSymbols[ROW][COL] = {
+  {"", "I", "II", "III" },
+  {"", "X", "XX", "XXX" },
+  {"", "C", "CC", "CCC" },
+  {"", "M", "MM", "MMM" }
+};
+
+
 int RomanToArabic(struct RomanNumeral *romanNumeral) {
-  if(!strcmp(romanNumeral->ones, "I") &&
-    !strcmp(romanNumeral->tens, "") &&
-    !strcmp(romanNumeral->hundreds, "") &&
-    !strcmp(romanNumeral->thousands, "") ) {
-      return 1;
+  int i;
+  int arabic = 0;
+
+  for(i = 0; i < COL; ++i) {
+    if(!strcmp(romanNumeral->ones, romanSymbols[0][i]))
+      arabic += i;
   }
-  else if(!strcmp(romanNumeral->ones, "I") &&
-    !strcmp(romanNumeral->tens, "X") &&
-    !strcmp(romanNumeral->hundreds, "C") &&
-    !strcmp(romanNumeral->thousands, "M") ) {
-      return 1111;
+  for(i = 0; i < COL; ++i) {
+    if(!strcmp(romanNumeral->tens, romanSymbols[1][i]))
+      arabic += i*10;
   }
-  else if(!strcmp(romanNumeral->ones, "II") &&
-    !strcmp(romanNumeral->tens, "XX") &&
-    !strcmp(romanNumeral->hundreds, "CC") &&
-    !strcmp(romanNumeral->thousands, "MM") ) {
-      return 2222;
+  for(i = 0; i < COL; ++i) {
+    if(!strcmp(romanNumeral->hundreds, romanSymbols[2][i]))
+      arabic += i*100;
   }
-  else {
-    return 3333;
+  for(i = 0; i < COL; ++i) {
+    if(!strcmp(romanNumeral->thousands, romanSymbols[3][i]))
+      arabic += i*1000;
   }
+
+  return arabic;
 }
