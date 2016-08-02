@@ -1,0 +1,13 @@
+#include "../src/RomanToArabic.h"
+
+#test setsITo1
+  struct RomanNumeral romanNumeral;
+
+  strcpy(romanNumeral.ones, "I");
+  strcpy(romanNumeral.tens, "");
+  strcpy(romanNumeral.hundreds, "");
+  strcpy(romanNumeral.thousands, "");
+
+  int arabic = RomanToArabic(&romanNumeral);
+
+  ck_assert_int_eq(arabic, 1);
