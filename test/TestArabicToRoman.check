@@ -1,0 +1,12 @@
+#include "../src/ArabicToRoman.h"
+
+#test givenIReturns1
+  struct RomanNumeral romanNumeral;
+
+  bool isValidRomanNumeral = ArabicToRoman(&romanNumeral, 1);
+
+  ck_assert_str_eq(romanNumeral.ones, "I");
+  ck_assert_str_eq(romanNumeral.tens, "");
+  ck_assert_str_eq(romanNumeral.hundreds, "");
+  ck_assert_str_eq(romanNumeral.thousands, "");
+  ck_assert(isValidRomanNumeral == true);
