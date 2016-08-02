@@ -35,3 +35,15 @@
   int arabic = RomanToArabic(&romanNumeral);
 
   ck_assert_int_eq(arabic, 2222);
+
+#test givenMMMCCCXXXIIIReturns3333
+  struct RomanNumeral romanNumeral;
+
+  strcpy(romanNumeral.ones, "III");
+  strcpy(romanNumeral.tens, "XXX");
+  strcpy(romanNumeral.hundreds, "CCC");
+  strcpy(romanNumeral.thousands, "MMM");
+
+  int arabic = RomanToArabic(&romanNumeral);
+
+  ck_assert_int_eq(arabic, 3333);
