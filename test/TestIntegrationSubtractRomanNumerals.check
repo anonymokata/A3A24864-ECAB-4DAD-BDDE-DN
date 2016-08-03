@@ -5,7 +5,7 @@
 #include "../src/ArabicToRoman.h"
 #include "../src/RomanToArabic.h"
 
-#test TestValidAddition
+#test TestValidSubtraction
 
   struct RomanNumeral minuendRoman;
 	struct RomanNumeral subtrahendRoman;
@@ -36,3 +36,30 @@
 	ck_assert(isValidRomanNumeral2 == true);
 	ck_assert(isValidRomanNumeral3 == true);
 	ck_assert(isValidRomanNumeral4 == true);
+
+
+#test TestInvalidSubtraction
+
+  struct RomanNumeral minuendRoman;
+	struct RomanNumeral subtrahendRoman;
+	struct RomanNumeral romanDifference;
+	char minuendRomanString[MIN_ROMAN_NUMERAL_STRING_BUFFER_SIZE];
+	char subtrahendRomanString[MIN_ROMAN_NUMERAL_STRING_BUFFER_SIZE];
+	char romanDifferenceExpected[MIN_ROMAN_NUMERAL_STRING_BUFFER_SIZE];
+	char romanDifferenceComputed[MIN_ROMAN_NUMERAL_STRING_BUFFER_SIZE];
+	bool isValidRomanNumeral1 = false;
+	bool isValidRomanNumeral2 = false;
+	bool isValidRomanNumeral3 = true;
+
+	strcpy(minuendRomanString, "MIV");
+	strcpy(subtrahendRomanString, "MMI");
+
+	isValidRomanNumeral1 = SetRomanNumeral(&minuendRoman, minuendRomanString);
+	isValidRomanNumeral2 = SetRomanNumeral(&subtrahendRoman, subtrahendRomanString);
+
+	isValidRomanNumeral3 = SubtractRomanNumerals(&minuendRoman, &subtrahendRoman, &romanDifference,
+		RomanToArabic, ArabicToRoman);
+
+	ck_assert(isValidRomanNumeral1 == true);
+	ck_assert(isValidRomanNumeral2 == true);
+	ck_assert(isValidRomanNumeral3 == false);
