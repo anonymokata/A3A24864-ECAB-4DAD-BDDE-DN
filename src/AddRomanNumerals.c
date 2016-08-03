@@ -13,5 +13,7 @@ bool AddRomanNumerals(struct RomanNumeral *romanSummand1, struct RomanNumeral *r
   int arabicSummand1 = (*romanToArabicConverterFunction)(romanSummand1);
   int arabicSummand2 = (*romanToArabicConverterFunction)(romanSummand2);
 
-  bool isValidRoman = (*arabicToRomanConverterFunction)(romanSummand2, 1);
+  int arabicSum = arabicSummand1 + arabicSummand2;
+
+  bool isValidRoman = (*arabicToRomanConverterFunction)(romanSum, arabicSum);
 }
