@@ -1,0 +1,40 @@
+#include <string.h>
+#include "../src/AddRomanNumerals.h"
+#include "../src/SubtractRomanNumerals.h"
+#include "../src/SetRomanNumeral.h"
+#include "../src/GetRomanNumeralString.h"
+#include "../src/ArabicToRoman.h"
+#include "../src/RomanToArabic.h"
+
+#test TestAddAndSubtraction
+
+  struct RomanNumeral minuendRoman;
+	struct RomanNumeral subtrahendRoman;
+	struct RomanNumeral romanDifference;
+  struct RomanNumeral romanAddition;
+	char minuendRomanString[MIN_ROMAN_NUMERAL_STRING_BUFFER_SIZE];
+	char subtrahendRomanString[MIN_ROMAN_NUMERAL_STRING_BUFFER_SIZE];
+	char romanComputedString[MIN_ROMAN_NUMERAL_STRING_BUFFER_SIZE];
+	bool isValidRomanNumeral1 = false;
+	bool isValidRomanNumeral2 = false;
+	bool isValidRomanNumeral3 = false;
+	bool isValidRomanNumeral4 = false;
+
+	strcpy(minuendRomanString, "II");
+	strcpy(subtrahendRomanString, "I");
+
+	isValidRomanNumeral1 = SetRomanNumeral(&minuendRoman, minuendRomanString);
+	isValidRomanNumeral2 = SetRomanNumeral(&subtrahendRoman, subtrahendRomanString);
+
+	isValidRomanNumeral3 = SubtractRomanNumerals(&minuendRoman, &subtrahendRoman, &romanDifference,
+		RomanToArabic, ArabicToRoman);
+  isValidRomanNumeral4 = AddRomanNumerals(&subtrahendRoman, &romanDifference, &romanAddition,
+		RomanToArabic, ArabicToRoman);
+
+	isValidRomanNumeral4 = GetRomanNumeralString(&romanAddition, romanComputedString, MIN_ROMAN_NUMERAL_STRING_BUFFER_SIZE);
+
+	ck_assert_str_eq(romanComputedString, minuendRomanString);
+	ck_assert(isValidRomanNumeral1 == true);
+	ck_assert(isValidRomanNumeral2 == true);
+	ck_assert(isValidRomanNumeral3 == true);
+	ck_assert(isValidRomanNumeral4 == true);
