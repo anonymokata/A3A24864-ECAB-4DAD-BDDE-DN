@@ -6,6 +6,7 @@ test: testRomanNumeral
 	./test/TestAddRomanNumerals
 	./test/TestSubtractRomanNumerals
 	./test/TestIntegrationAddRomanNumerals
+	./test/TestIntegrationSubtractRomanNumerals
 
 testmem: testRomanNumeral
 	valgrind --leak-check=yes ./test/TestSetRomanNumeral
@@ -15,6 +16,7 @@ testmem: testRomanNumeral
 	valgrind --leak-check=yes ./test/TestAddRomanNumerals
 	valgrind --leak-check=yes ./test/TestSubtractRomanNumerals
 	valgrind --leak-check=yes ./test/TestIntegrationAddRomanNumerals
+	valgrind --leak-check=yes ./test/TestIntegrationSubtractRomanNumerals
 
 testRomanNumeral: .checkmk ./src/SetRomanNumeral.c
 	gcc ./test/TestSetRomanNumeral.c ./src/SetRomanNumeral.c \
@@ -43,6 +45,14 @@ testRomanNumeral: .checkmk ./src/SetRomanNumeral.c
 		./src/RomanToArabic.c \
 		-std=c90 -g -O0 $(shell pkg-config --libs --cflags check) \
 		-lc -lm -o ./test/TestIntegrationAddRomanNumerals
+		gcc ./test/TestIntegrationSubtractRomanNumerals.c \
+			./src/SubtractRomanNumerals.c \
+			./src/SetRomanNumeral.c \
+			./src/GetRomanNumeralString.c \
+			./src/ArabicToRoman.c \
+			./src/RomanToArabic.c \
+			-std=c90 -g -O0 $(shell pkg-config --libs --cflags check) \
+			-lc -lm -o ./test/TestIntegrationSubtractRomanNumerals
 
 .checkmk: ./test/TestSetRomanNumeral.check ./test/TestRomanToArabic.check ./test/TestArabicToRoman.check
 	checkmk ./test/TestSetRomanNumeral.check > ./test/TestSetRomanNumeral.c
@@ -52,6 +62,7 @@ testRomanNumeral: .checkmk ./src/SetRomanNumeral.c
 	checkmk ./test/TestAddRomanNumerals.check > ./test/TestAddRomanNumerals.c
 	checkmk ./test/TestSubtractRomanNumerals.check > ./test/TestSubtractRomanNumerals.c
 	checkmk ./test/TestIntegrationAddRomanNumerals.check > ./test/TestIntegrationAddRomanNumerals.c
+	checkmk ./test/TestIntegrationSubtractRomanNumerals.check > ./test/TestIntegrationSubtractRomanNumerals.c
 
 clean :
 	rm -f ./test/TestSetRomanNumeral ./test/TestSetRomanNumeral.c
@@ -60,3 +71,5 @@ clean :
 	rm -f ./test/TestGetRomanNumeralString ./test/TestGetRomanNumeralString.c
 	rm -f ./test/TestAddRomanNumerals ./test/TestAddRomanNumerals.c
 	rm -f ./test/TestSubtractRomanNumerals ./test/TestSubtractRomanNumerals.c
+	rm -f ./test/TestIntegrationAddRomanNumerals ./test/TestIntegrationAddRomanNumerals.c
+	rm -f ./test/TestIntegrationSubtractRomanNumerals ./test/TestIntegrationSubtractRomanNumerals.c
