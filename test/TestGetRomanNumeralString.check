@@ -16,3 +16,14 @@
 
   ck_assert_str_eq(romanNumeralString, "MCXI");
   ck_assert(bufferIsLargeEnough == true);
+
+#test givenRomanNumberStringBufferSizeTooSmallIsInvalid
+  struct RomanNumeral romanNumeral;
+  char romanNumeralString[5];
+  int romanNumeralStringBufferSize = 5;
+  bool bufferIsLargeEnough;
+
+  bufferIsLargeEnough = GetRomanNumeralString(&romanNumeral, romanNumeralString,
+    romanNumeralStringBufferSize);
+
+  ck_assert(bufferIsLargeEnough == false);
