@@ -1,0 +1,25 @@
+#include <string.h>
+#include "../src/AddRomanNumerals.h"
+
+int romanToArabicWasCalledCount;
+
+int MockRomanToArabic(struct RomanNumeral *romanNumeral) {
+  ++romanToArabicWasCalledCount;
+}
+
+bool MockArabicToRoman(struct RomanNumeral *romanNumeral, int arabic) {
+
+}
+
+#test RomanToArabicCallTwice
+  struct RomanNumeral summand1;
+  struct RomanNumeral summand2;
+  struct RomanNumeral sum;
+  bool isValidRomanNumeral;
+
+  romanToArabicWasCalledCount = 0;
+
+  isValidRomanNumeral = AddRomanNumerals(&summand1, &summand2, &sum,
+    MockRomanToArabic, MockArabicToRoman);
+
+  ck_assert_int_eq(romanToArabicWasCalledCount, 2);
