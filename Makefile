@@ -5,6 +5,7 @@ test: testRomanNumeral
 	./test/TestGetRomanNumeralString
 	./test/TestAddRomanNumerals
 	./test/TestSubtractRomanNumerals
+	./test/TestIntegrationAddRomanNumerals
 
 testmem: testRomanNumeral
 	valgrind --leak-check=yes ./test/TestSetRomanNumeral
@@ -13,6 +14,7 @@ testmem: testRomanNumeral
 	valgrind --leak-check=yes ./test/TestGetRomanNumeralString
 	valgrind --leak-check=yes ./test/TestAddRomanNumerals
 	valgrind --leak-check=yes ./test/TestSubtractRomanNumerals
+	valgrind --leak-check=yes ./test/TestIntegrationAddRomanNumerals
 
 testRomanNumeral: .checkmk ./src/SetRomanNumeral.c
 	gcc ./test/TestSetRomanNumeral.c ./src/SetRomanNumeral.c \
@@ -33,6 +35,14 @@ testRomanNumeral: .checkmk ./src/SetRomanNumeral.c
 	gcc ./test/TestSubtractRomanNumerals.c ./src/SubtractRomanNumerals.c \
 		-std=c90 -g -O0 $(shell pkg-config --libs --cflags check) \
 		-lc -lm -o ./test/TestSubtractRomanNumerals
+	gcc ./test/TestIntegrationAddRomanNumerals.c \
+		./src/AddRomanNumerals.c \
+		./src/SetRomanNumeral.c \
+		./src/GetRomanNumeralString.c \
+		./src/ArabicToRoman.c \
+		./src/RomanToArabic.c \
+		-std=c90 -g -O0 $(shell pkg-config --libs --cflags check) \
+		-lc -lm -o ./test/TestIntegrationAddRomanNumerals
 
 .checkmk: ./test/TestSetRomanNumeral.check ./test/TestRomanToArabic.check ./test/TestArabicToRoman.check
 	checkmk ./test/TestSetRomanNumeral.check > ./test/TestSetRomanNumeral.c
@@ -41,6 +51,7 @@ testRomanNumeral: .checkmk ./src/SetRomanNumeral.c
 	checkmk ./test/TestGetRomanNumeralString.check > ./test/TestGetRomanNumeralString.c
 	checkmk ./test/TestAddRomanNumerals.check > ./test/TestAddRomanNumerals.c
 	checkmk ./test/TestSubtractRomanNumerals.check > ./test/TestSubtractRomanNumerals.c
+	checkmk ./test/TestIntegrationAddRomanNumerals.check > ./test/TestIntegrationAddRomanNumerals.c
 
 clean :
 	rm -f ./test/TestSetRomanNumeral ./test/TestSetRomanNumeral.c

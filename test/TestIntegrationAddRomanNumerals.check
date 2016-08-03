@@ -1,0 +1,39 @@
+#include <stdio.h>
+#include <string.h>
+#include "../src/AddRomanNumerals.h"
+#include "../src/SetRomanNumeral.h"
+#include "../src/GetRomanNumeralString.h"
+#include "../src/ArabicToRoman.h"
+#include "../src/RomanToArabic.h"
+
+#test TestValidAddition
+
+  struct RomanNumeral romanSummand1;
+	struct RomanNumeral romanSummand2;
+	struct RomanNumeral romanSum;
+	char romanSummand1String[MIN_ROMAN_NUMERAL_STRING_BUFFER_SIZE];
+	char romanSummand2String[MIN_ROMAN_NUMERAL_STRING_BUFFER_SIZE];
+	char romanSumExpected[MIN_ROMAN_NUMERAL_STRING_BUFFER_SIZE];
+	char romanSumComputed[MIN_ROMAN_NUMERAL_STRING_BUFFER_SIZE];
+	bool isValidRomanNumeral1 = false;
+	bool isValidRomanNumeral2 = false;
+	bool isValidRomanNumeral3 = false;
+	bool isValidRomanNumeral4 = false;
+
+	strcpy(romanSummand1String, "MXC");
+	strcpy(romanSummand2String, "XXX");
+	strcpy(romanSumExpected, "MCXX");
+
+	isValidRomanNumeral1 = SetRomanNumeral(&romanSummand1, romanSummand1String);
+	isValidRomanNumeral2 = SetRomanNumeral(&romanSummand2, romanSummand2String);
+
+	isValidRomanNumeral3 = AddRomanNumerals(&romanSummand1, &romanSummand2, &romanSum,
+		RomanToArabic, ArabicToRoman);
+
+	isValidRomanNumeral4 = GetRomanNumeralString(&romanSum, romanSumComputed, MIN_ROMAN_NUMERAL_STRING_BUFFER_SIZE);
+
+	ck_assert_str_eq(romanSumComputed, romanSumExpected);
+	ck_assert(isValidRomanNumeral1 == true);
+	ck_assert(isValidRomanNumeral2 == true);
+	ck_assert(isValidRomanNumeral3 == true);
+	ck_assert(isValidRomanNumeral4 == true);
