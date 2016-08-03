@@ -2,7 +2,11 @@
 #define GET_ROMAN_NUMERAL_STRING_H
 
 #include "RomanNumeral.h"
+#define MIN_ROMAN_NUMERAL_STRING_BUFFER_SIZE 21
 
-void GetRomanNumeralString(struct RomanNumeral *romanNumeral, char *romanString);
+typedef enum { false, true } bool;
+
+bool GetRomanNumeralString(struct RomanNumeral *romanNumeral, char *romanNumeralString,
+  int romanNumeralStringBufferSize);
 
 #endif /* GET_ROMAN_NUMERAL_STRING_H */

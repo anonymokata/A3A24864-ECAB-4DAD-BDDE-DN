@@ -2,13 +2,17 @@
 
 #test givenMCXIReturnsMCXI
   struct RomanNumeral romanNumeral;
-  char romanString[5];
+  char romanNumeralString[MIN_ROMAN_NUMERAL_STRING_BUFFER_SIZE];
+  int romanNumeralStringBufferSize = MIN_ROMAN_NUMERAL_STRING_BUFFER_SIZE;
+  bool bufferIsLargeEnough;
 
   strcpy(romanNumeral.ones, "I");
   strcpy(romanNumeral.tens, "X");
   strcpy(romanNumeral.hundreds, "C");
   strcpy(romanNumeral.thousands, "M");
 
-  GetRomanNumeralString(&romanNumeral, romanString);
+  bufferIsLargeEnough = GetRomanNumeralString(&romanNumeral, romanNumeralString,
+    romanNumeralStringBufferSize);
 
-  ck_assert_str_eq(romanString, "MCXI");
+  ck_assert_str_eq(romanNumeralString, "MCXI");
+  ck_assert(bufferIsLargeEnough == true);

@@ -1,9 +1,15 @@
 #include <string.h>
 #include "RomanNumeral.h"
 
-void GetRomanNumeralString(struct RomanNumeral *romanNumeral, char *romanString) {
-  strcpy(romanString, romanNumeral->thousands);
-  strcat(romanString, romanNumeral->hundreds);
-  strcat(romanString, romanNumeral->tens);
-  strcat(romanString, romanNumeral->ones);
+typedef enum { false, true } bool;
+
+bool GetRomanNumeralString(struct RomanNumeral *romanNumeral, char *romanNumeralString,
+  int romanNumeralStringBufferSize) {
+
+  strcpy(romanNumeralString, romanNumeral->thousands);
+  strcat(romanNumeralString, romanNumeral->hundreds);
+  strcat(romanNumeralString, romanNumeral->tens);
+  strcat(romanNumeralString, romanNumeral->ones);
+
+  return true;
 }
