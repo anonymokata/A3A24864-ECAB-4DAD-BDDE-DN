@@ -1,4 +1,3 @@
-#include <stdio.h>
 #include <string.h>
 #include "../src/AddRomanNumerals.h"
 #include "../src/SetRomanNumeral.h"
@@ -37,3 +36,29 @@
 	ck_assert(isValidRomanNumeral2 == true);
 	ck_assert(isValidRomanNumeral3 == true);
 	ck_assert(isValidRomanNumeral4 == true);
+
+#test TestInvalidAdditionTooLarge
+
+  struct RomanNumeral romanSummand1;
+	struct RomanNumeral romanSummand2;
+	struct RomanNumeral romanSum;
+	char romanSummand1String[MIN_ROMAN_NUMERAL_STRING_BUFFER_SIZE];
+	char romanSummand2String[MIN_ROMAN_NUMERAL_STRING_BUFFER_SIZE];
+	char romanSumExpected[MIN_ROMAN_NUMERAL_STRING_BUFFER_SIZE];
+	char romanSumComputed[MIN_ROMAN_NUMERAL_STRING_BUFFER_SIZE];
+	bool isValidRomanNumeral1 = false;
+	bool isValidRomanNumeral2 = false;
+	bool isValidRomanNumeral3 = true;
+
+	strcpy(romanSummand1String, "MMM");
+	strcpy(romanSummand2String, "M");
+
+	isValidRomanNumeral1 = SetRomanNumeral(&romanSummand1, romanSummand1String);
+	isValidRomanNumeral2 = SetRomanNumeral(&romanSummand2, romanSummand2String);
+
+	isValidRomanNumeral3 = AddRomanNumerals(&romanSummand1, &romanSummand2, &romanSum,
+		RomanToArabic, ArabicToRoman);
+
+	ck_assert(isValidRomanNumeral1 == true);
+	ck_assert(isValidRomanNumeral2 == true);
+	ck_assert(isValidRomanNumeral3 == false);
