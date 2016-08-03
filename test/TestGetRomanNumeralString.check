@@ -1,0 +1,14 @@
+#include "../src/GetRomanNumeralString.h"
+
+#test givenMCXIReturnsMCXI
+  struct RomanNumeral romanNumeral;
+  char romanString[5];
+
+  strcpy(romanNumeral.ones, "I");
+  strcpy(romanNumeral.tens, "X");
+  strcpy(romanNumeral.hundreds, "C");
+  strcpy(romanNumeral.thousands, "M");
+
+  GetRomanNumeralString(&romanNumeral, romanString);
+
+  ck_assert_str_eq(romanString, "MCXI");
