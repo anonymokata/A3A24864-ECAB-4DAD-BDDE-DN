@@ -8,7 +8,7 @@ typedef enum { false, true } bool;
 
 char *romanSymbols[ROW][COL] = {
   {"", "I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX" },
-  {"", "X", "XX", "XXX", "XL", "L", "LX", "LXX", "LXXX", "" },
+  {"", "X", "XX", "XXX", "XL", "L", "LX", "LXX", "LXXX", "XC" },
   {"", "C", "CC", "CCC", "CD", "D", "DC", "DCC", "DCCC", "CM" },
   {"", "M", "MM", "MMM", "", "", "", "", "", "" }
 };
