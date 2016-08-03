@@ -20,7 +20,11 @@ int MockRomanToArabic(struct RomanNumeral *romanNumeral) {
 bool MockArabicToRoman(struct RomanNumeral *romanNumeral, int arabic) {
   ++arabicToRomanWasCalledCount;
   arabicToRomanWasCalledWithArabicDifference = arabic;
+  return true;
+}
 
+bool MockInvalidArabicToRoman(struct RomanNumeral *romanNumeral, int arabic) {
+  return false;
 }
 
 #test RomanToArabicCalledTwice
@@ -66,3 +70,25 @@ bool MockArabicToRoman(struct RomanNumeral *romanNumeral, int arabic) {
     MockRomanToArabic, MockArabicToRoman);
 
   ck_assert_int_eq(arabicToRomanWasCalledWithArabicDifference, correctArabicDifference);
+
+#test ReturnsValidRomanSumFlag
+  struct RomanNumeral minuendRoman;
+  struct RomanNumeral subtrahendRoman;
+  struct RomanNumeral romanDifference;
+  bool isValidRomanNumeral = false;
+
+  isValidRomanNumeral = SubtractRomanNumerals(&minuendRoman, &subtrahendRoman, &romanDifference,
+    MockRomanToArabic, MockArabicToRoman);
+
+  ck_assert(isValidRomanNumeral == true);
+
+#test ReturnsInValidRomanSumFlag
+  struct RomanNumeral minuendRoman;
+  struct RomanNumeral subtrahendRoman;
+  struct RomanNumeral romanDifference;
+  bool isValidRomanNumeral = false;
+
+  isValidRomanNumeral = SubtractRomanNumerals(&minuendRoman, &subtrahendRoman, &romanDifference,
+    MockRomanToArabic, MockInvalidArabicToRoman);
+
+  ck_assert(isValidRomanNumeral == false);
