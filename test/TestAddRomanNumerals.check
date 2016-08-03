@@ -1,4 +1,3 @@
-#include <string.h>
 #include "../src/AddRomanNumerals.h"
 #define ARABIC_SUMMAND 10
 
