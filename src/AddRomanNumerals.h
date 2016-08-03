@@ -2,8 +2,7 @@
 #define ADD_ROMAN_NUMERALS_H
 
 #include "RomanNumeral.h"
-
-typedef enum { false, true } bool;
+#include "RomanNumeralUtilities.h"
 
 typedef int (*RomanToArabicConverterFunction)(struct RomanNumeral *);
 typedef bool (*ArabicToRomanConverterFunction)(struct RomanNumeral *, int);

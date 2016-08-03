@@ -1,8 +1,7 @@
 #include <string.h>
 #include "RomanNumeral.h"
 #include "RomanSymbolDefinitions.h"
-
-typedef enum { false, true } bool;
+#include "RomanNumeralUtilities.h"
 
 bool ArabicToRoman(struct RomanNumeral *romanNumeral, int arabic) {
   int onesPlace = arabic;

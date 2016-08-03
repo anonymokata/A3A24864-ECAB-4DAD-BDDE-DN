@@ -1,11 +1,10 @@
 #include <string.h>
 #include "RomanNumeral.h"
 #include "RomanSymbolDefinitions.h"
+#include "RomanNumeralUtilities.h"
 
 static int romanSymbolLength[] = {0, 1, 2, 3, 2, 1, 2, 3, 4, 2};
 static int symbolSearchOrder[COL] = {0, 9, 8, 7, 6, 4, 5, 3, 2, 1};
-
-typedef enum { false, true } bool;
 
 static void ClearRomanNumeral(struct RomanNumeral *romanNumeral) {
   strcpy(romanNumeral->ones, "");

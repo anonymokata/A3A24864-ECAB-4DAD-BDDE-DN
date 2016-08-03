@@ -2,8 +2,7 @@
 #define SET_ROMAN_NUMERAL_H
 
 #include "RomanNumeral.h"
-
-typedef enum { false, true } bool;
+#include "RomanNumeralUtilities.h"
 
 bool SetRomanNumeral(struct RomanNumeral *romanNumeral, char *romanString);
 
