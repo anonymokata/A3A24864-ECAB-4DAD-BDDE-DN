@@ -13,5 +13,7 @@ bool SubtractRomanNumerals(struct RomanNumeral *minuendRoman, struct RomanNumera
   int arabicMinuend = (*romanToArabicConverterFunction)(minuendRoman);
   int arabicSubtrahend = (*romanToArabicConverterFunction)(subtrahendRoman);
 
-  bool isValidRomanNumeral = (*arabicToRomanConverterFunction)(romanDifference, 1);
+  int arabicDifference = arabicMinuend - arabicSubtrahend;
+
+  bool isValidRomanNumeral = (*arabicToRomanConverterFunction)(romanDifference, arabicDifference);
 }

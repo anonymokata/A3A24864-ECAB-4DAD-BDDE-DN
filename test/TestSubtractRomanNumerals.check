@@ -1,14 +1,26 @@
+#include <string.h>
 #include "../src/SubtractRomanNumerals.h"
+
+#define ARABIC_MINUEND 10
+#define ARABIC_SUBTRAHEND 1
 
 int romanToArabicWasCalledCount;
 int arabicToRomanWasCalledCount;
+int arabicToRomanWasCalledWithArabicDifference;
 
 int MockRomanToArabic(struct RomanNumeral *romanNumeral) {
   ++romanToArabicWasCalledCount;
+
+  if(!strcmp(romanNumeral->ones, "I"))
+    return ARABIC_MINUEND;
+  else
+    return ARABIC_SUBTRAHEND;
 }
 
 bool MockArabicToRoman(struct RomanNumeral *romanNumeral, int arabic) {
   ++arabicToRomanWasCalledCount;
+  arabicToRomanWasCalledWithArabicDifference = arabic;
+
 }
 
 #test RomanToArabicCalledTwice
@@ -36,3 +48,21 @@ bool MockArabicToRoman(struct RomanNumeral *romanNumeral, int arabic) {
     MockRomanToArabic, MockArabicToRoman);
 
   ck_assert_int_eq(arabicToRomanWasCalledCount, 1);
+
+#test ArabicToRomanCalledWithArabicDifference
+  struct RomanNumeral minuendRoman;
+  struct RomanNumeral subtrahendRoman;
+  struct RomanNumeral romanDifference;
+  bool isValidRomanNumeral;
+
+  strcpy(minuendRoman.ones, "I");
+  strcpy(minuendRoman.tens, "");
+  strcpy(minuendRoman.hundreds, "");
+  strcpy(minuendRoman.thousands, "");
+
+  int correctArabicDifference = ARABIC_MINUEND-ARABIC_SUBTRAHEND;
+
+  isValidRomanNumeral = SubtractRomanNumerals(&minuendRoman, &subtrahendRoman, &romanDifference,
+    MockRomanToArabic, MockArabicToRoman);
+
+  ck_assert_int_eq(arabicToRomanWasCalledWithArabicDifference, correctArabicDifference);
