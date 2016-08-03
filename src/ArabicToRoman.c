@@ -4,13 +4,13 @@
 typedef enum { false, true } bool;
 
 #define ROW 4
-#define COL 9
+#define COL 10
 
 char *romanSymbols[ROW][COL] = {
-  {"", "I", "II", "III", "IV", "V", "VI", "VII", "VIII" },
-  {"", "X", "XX", "XXX", "XL", "L", "LX", "LXX", "" },
-  {"", "C", "CC", "CCC", "CD", "D", "DC", "DCC", "DCCC" },
-  {"", "M", "MM", "MMM", "", "", "" }
+  {"", "I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX" },
+  {"", "X", "XX", "XXX", "XL", "L", "LX", "LXX", "LXXX", "" },
+  {"", "C", "CC", "CCC", "CD", "D", "DC", "DCC", "DCCC", "CM" },
+  {"", "M", "MM", "MMM", "", "", "", "", "", "" }
 };
 
 bool ArabicToRoman(struct RomanNumeral *romanNumeral, int arabic) {

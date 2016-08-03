@@ -91,7 +91,6 @@
   ck_assert_str_eq(romanNumeral.thousands, "");
   ck_assert(isValidRomanNumeral == true);
 
-
 #test given878ReturnsDCCCLXXVIIVIII
   struct RomanNumeral romanNumeral;
 
@@ -101,4 +100,15 @@
   ck_assert_str_eq(romanNumeral.tens, "LXX");
   ck_assert_str_eq(romanNumeral.hundreds, "DCCC");
   ck_assert_str_eq(romanNumeral.thousands, "");
+  ck_assert(isValidRomanNumeral == true);
+
+#test given878ReturnsMMMCMLXXXIX
+  struct RomanNumeral romanNumeral;
+
+  bool isValidRomanNumeral = ArabicToRoman(&romanNumeral, 3989);
+
+  ck_assert_str_eq(romanNumeral.ones, "IX");
+  ck_assert_str_eq(romanNumeral.tens, "LXXX");
+  ck_assert_str_eq(romanNumeral.hundreds, "CM");
+  ck_assert_str_eq(romanNumeral.thousands, "MMM");
   ck_assert(isValidRomanNumeral == true);
