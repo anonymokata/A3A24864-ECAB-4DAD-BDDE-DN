@@ -17,6 +17,10 @@ bool MockArabicToRoman(struct RomanNumeral *romanNumeral, int arabic) {
   return true;
 }
 
+bool MockInvalidArabicToRoman(struct RomanNumeral *romanNumeral, int arabic) {
+  return false;
+}
+
 #test RomanToArabicCalledTwice
   struct RomanNumeral summand1;
   struct RomanNumeral summand2;
@@ -67,3 +71,14 @@ bool MockArabicToRoman(struct RomanNumeral *romanNumeral, int arabic) {
     MockRomanToArabic, MockArabicToRoman);
 
   ck_assert(isValidRomanNumeral == true);
+
+#test ReturnsInValidRomanSumFlag
+  struct RomanNumeral summand1;
+  struct RomanNumeral summand2;
+  struct RomanNumeral sum;
+  bool isValidRomanNumeral = true;
+
+  isValidRomanNumeral = AddRomanNumerals(&summand1, &summand2, &sum,
+    MockRomanToArabic, MockInvalidArabicToRoman);
+
+  ck_assert(isValidRomanNumeral == false);
